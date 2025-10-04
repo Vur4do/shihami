@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shihami | Create NFT</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Heebo&family=Lato:wght@300;400;700&family=Oxanium:wght@200..800&family=Work+Sans:wght@100..900&display=swap&_v=20251004162600"
+		rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20251004162600" />
+	<link rel="stylesheet" href="css/style.min.css?_v=20251004162600">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header anim-item no-re-animation">
+	<div class="header__container container">
+		<div class="header__content">
+			<a href="index.html" class="header__logo" aria-label="Site logo">
+				<picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt=""></picture>
+			</a>
+			<div class="header__menu header-menu" data-da="header__content,991,first,max">
+				<button type="button" class="header-menu__icon" aria-expanded="false" aria-controls="main-navigation"
+					aria-label="Toggle navigation menu">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</button>
+				<nav class="header-menu__body" id="main-navigation">
+					<ul class="header-menu__list">
+						<li class="header-menu__item">
+							<a href="#explore" class="header-menu__link">explore</a>
+						</li>
+						<li class="header-menu__item">
+							<a href="#trending" class="header-menu__link">trending nft<span
+									class="lower-case">S</span></a>
+						</li>
+						<li class="header-menu__item">
+							<a href="#auctioned" class="header-menu__link">auctioned nft<span
+									class="lower-case">s</span></a>
+						</li>
+						<li class="header-menu__item">
+							<a href="#influencers" class="header-menu__link">influencers</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="header__actions">
+				<a href="index.html" class="header__connect-wallet-btn btn btn--light btn--small"
+					data-da="header-menu__body,499,last,max">
+					<span>connect wallet</span>
+				</a>
+				<a href="user-profile.html" class="header__user-profile" aria-label="go to your profile">
+					<picture><source srcset="img/User-Profile-icon.webp" type="image/webp"><img src="img/User-Profile-icon.jpg" alt=""></picture>
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+		<div class="blurred-spot header-blurred-spot">
+			<img src="img/spot-purple.svg" alt="" aria-hidden="true">
+		</div>
+		<main>
+			<section class="nft-creation">
+				<div class="nft-creation__container container">
+					<div class="nft-creation__content">
+						<div class="nft-creation__header">
+							<div class="nft-creation__bg-image ibg">
+								<picture><source srcset="img/bg-img.webp" type="image/webp"><img src="img/bg-img.png" alt="" aria-hidden="true"></picture>
+							</div>
+							<h1 class="nft-creation__title title header-height-offset-top">
+								create your own masterpiece
+							</h1>
+							<div class="nft-creation__desc text">
+								get onboard and earn money like a pro
+							</div>
+						</div>
+						<form action="#" class="nft-creation__form form">
+							<div class="form__drop-zone form-drop-zone">
+								<div class="form-drop-zone__inner">
+									<div class="form-drop-zone__content">
+										<div class="form-drop-zone__icon">
+											<img src="img/icons/file-icon.svg" alt="" aria-hidden="true">
+										</div>
+										<label class="form-drop-zone__label" for="nftFile">Drag And Drop Your NFT File
+											Here</label>
+										<p class="form-drop-zone__desc">PNG, JPG, GIF, Video — Any File Up To 100MB</p>
+										<input class="form-drop-zone__input" type="file" name="nftFile"
+											accept=".png,.jpg,.jpeg,.gif,.mp4,.mov" required hidden>
+										<button class="form-drop-zone__browse-btn" type="button"
+											aria-label="upload your nft from your device">Browse</button>
+									</div>
+									<div class="form-drop-zone__preview">
+										<button type="button" class="form-drop-zone__preview-close" aria-label="remove selected file"></button>
+										<div class="form-drop-zone__preview-inner">
+											<div class="form-drop-zone__preview-desc"></div>
+											<div class="form-drop-zone__preview-image"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form__grid">
+								<div class="form__group">
+									<label class="form__label" for="itemName">Item Name</label>
+									<div class="form__input-wrapper">
+										<input class="form__input" type="text" id="itemName" name="itemName"
+											placeholder="Enter Item Name" required>
+									</div>
+								</div>
+								<div class="form__group">
+									<label class="form__label" for="externalLink">External Link</label>
+									<div class="form__input-wrapper">
+										<input class="form__input" type="url" id="externalLink" name="externalLink"
+											placeholder="https://yoursite.com/item/123">
+									</div>
+								</div>
+								<div class="form__group">
+									<label class="form__label" for="collection">Collection</label>
+									<div class="form__select form-select" id="collection" name="collection">
+										<button class="form-select__button">Select Collection</button>
+										<ul class="form-select__list">
+											<li class="form-select__list-item" data-value="1">
+												Collection 1
+											</li>
+											<li class="form-select__list-item" data-value="2">
+												Collection 2
+											</li>
+											<li class="form-select__list-item" data-value="3">
+												Collection 3
+											</li>
+										</ul>
+										<input type="text" name="selectCollection" value="1"
+											class="form-select__input-hidden">
+									</div>
+								</div>
+								<div class="form__group">
+									<label class="form__label" for="supply">Supply</label>
+									<div class="form__input-wrapper">
+										<input class="form__input" type="number" id="supply" name="supply" min="1" value="1"
+											required>
+									</div>
+								</div>
+								<div class="form__group">
+									<label class="form__label" for="blockchain">Blockchain</label>
+									<div class="form__select form-select" id="blockchain" name="blockchain" required>
+										<button class="form-select__button"></button>
+										<ul class="form-select__list">
+											<li class="form-select__list-item form-select__list-item--selected"
+												data-value="ethereum">Ethereum
+											</li>
+											<li class="form-select__list-item" data-value="polygon">
+												Polygon
+											</li>
+											<li class="form-select__list-item" data-value="binance">
+												Binance Smart Chain
+											</li>
+										</ul>
+										<input type="text" name="selectCollection" value="1"
+											class="form-select__input-hidden">
+									</div>
+								</div>
+								<div class="form__group form__group--full-width">
+									<label class="form__label" for="itemDescription">Description</label>
+									<textarea class="form__textarea" id="itemDescription" name="description"
+										placeholder="Provide a detailed description of your item"></textarea>
+								</div>
+							</div>
+							<button class="form__btn btn btn--light" type="submit">
+								<span>Update Profile</span>
+							</button>
+						</form>
+					</div>
+				</div>
+			</section>
+			<section class="nft-creation-ready ready">
+				<div class="ready__bg-image ibg">
+					<picture><source srcset="img/bg-img.webp" type="image/webp"><img src="img/bg-img.png" alt="" aria-hidden="true"></picture>
+				</div>
+				<div class="ready__container container">
+					<div class="ready__content">
+						<div class="ready__title title-smaller">
+							Ready for Next NFT Drop?
+						</div>
+						<form action="#" class="ready__form">
+							<div class="ready__blurred-spot blurred-spot blurred-spot--small">
+								<img src="img/spot-purple-small.svg" alt="" aria-hidden="true">
+							</div>
+							<div class="ready__group">
+								<label for="email" class="visually-hidden">Enter your email</label>
+								<input class="ready__input" id="email" type="email" placeholder="info@gmail.com"
+									name="email">
+							</div>
+							<button class="ready__btn" type="submit" aria-label="Subscribe to updates about NFT drops">
+								<img src="img/Arrow-right.svg" alt="" aria-hidden="true" focusable="false">
+							</button>
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+	<div class="footer__container container">
+		<div class="footer__content">
+			<div class="footer__logo">
+				<a href="index.html" class="footer__logo-link" aria-label="Site logo - go to home page">
+					<picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt=""></picture>
+				</a>
+			</div>
+			<div class="footer__list-column">
+				<h3 class="footer__list-title">
+					About
+				</h3>
+				<ul class="footer__list">
+					<li class="footer__list-item">
+						<a href="privacy-policy.html" class="footer__list-link">About NFT</a>
+					</li>
+					<li class="footer__list-item">
+						<a href="index.html" class="footer__list-link">Live Auctions</a>
+					</li>
+					<li class="footer__list-item">
+						<a href="index.html" class="footer__list-link">NFT Blog</a>
+					</li>
+					<li class="footer__list-item">
+						<a href="index.html" class="footer__list-link">Activity</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer__list-column">
+				<h3 class="footer__list-title">
+					Support
+				</h3>
+				<ul class="footer__list">
+					<li class="footer__list-item">
+						<a href="index.html" class="footer__list-link">Help & Support</a>
+					</li>
+					<li class="footer__list-item">
+						<a href="index.html" class="footer__list-link">Item Details</a>
+					</li>
+					<li class="footer__list-item">
+						<a href="user-profile.html" class="footer__list-link">Author Profile</a>
+					</li>
+					<li class="footer__list-item">
+						<a href="#explore" class="footer__list-link">Collection</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer__info">
+				<p class="footer__text">
+					Shihami is the world’s leading NFTs marketplace where you can discover, sell and bid NFTs and get
+					rich
+				</p>
+				<ul class="footer__socials">
+					<li class="footer__social">
+						<a href="index.html" class="footer__social-link" aria-label="go to our youtube channel">
+							<svg width="38" height="27" viewBox="0 0 38 27" fill="none"
+								xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+								<path
+									d="M37.0137 4.49441C36.7987 3.70204 36.3785 2.97942 35.7949 2.39847C35.2113 1.81753 34.4848 1.39852 33.6875 1.18316C30.7312 0.376908 18.9043 0.363784 18.9043 0.363784C18.9043 0.363784 7.07919 0.350658 4.12103 1.12128C3.32425 1.34656 2.59914 1.77149 2.01533 2.35529C1.43153 2.93908 1.00862 3.66214 0.787208 4.45503C0.00755424 7.39128 2.76587e-06 13.4813 2.76587e-06 13.4813C2.76587e-06 13.4813 -0.00754833 19.6013 0.766442 22.5075C1.20063 24.1144 2.47489 25.3838 4.0946 25.8169C7.08107 26.6232 18.8759 26.6363 18.8759 26.6363C18.8759 26.6363 30.7029 26.6494 33.6592 25.8807C34.4567 25.6657 35.184 25.2476 35.769 24.6679C36.3541 24.0881 36.7766 23.3667 36.9949 22.575C37.7764 19.6407 37.7821 13.5525 37.7821 13.5525C37.7821 13.5525 37.8198 7.43066 37.0137 4.49441ZM15.1211 19.1232L15.1306 7.87316L24.9603 13.5075L15.1211 19.1232Z"
+									fill="#AD1AAF" />
+							</svg>
+						</a>
+					</li>
+					<li class="footer__social">
+						<a href="index.html" class="footer__social-link" aria-label="go to our twitter page">
+							<svg width="34" height="27" viewBox="0 0 34 27" fill="none"
+								xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+								<path
+									d="M30.3719 6.82824C30.3937 7.11991 30.3937 7.40991 30.3937 7.69991C30.3937 16.5749 23.5926 26.8016 11.1635 26.8016C7.33423 26.8016 3.77681 25.6999 0.783203 23.7866C1.32688 23.8482 1.85043 23.8699 2.41592 23.8699C5.45818 23.8772 8.41428 22.8668 10.8077 21.0016C9.39723 20.9762 8.0299 20.514 6.89666 19.6795C5.76342 18.8449 4.92086 17.6797 4.48661 16.3466C4.90444 16.4082 5.32395 16.4499 5.76359 16.4499C6.36936 16.4499 6.97848 16.3666 7.54398 16.2216C6.01321 15.9146 4.63675 15.0905 3.64864 13.8894C2.66052 12.6883 2.12175 11.1843 2.12395 9.63324V9.54991C3.02505 10.0482 4.07046 10.3599 5.17796 10.4016C4.25016 9.78922 3.48939 8.95828 2.96353 7.98289C2.43767 7.00751 2.16307 5.918 2.16422 4.81158C2.16422 3.56491 2.49815 2.42158 3.08378 1.42491C4.78218 3.49994 6.90046 5.19751 9.30144 6.40767C11.7024 7.61783 14.3325 8.3136 17.0215 8.44991C16.9174 7.94991 16.8537 7.43158 16.8537 6.91158C16.8532 6.02984 17.0278 5.15667 17.3673 4.34198C17.7068 3.52728 18.2047 2.78703 18.8324 2.16356C19.4601 1.54008 20.2054 1.04559 21.0257 0.708373C21.8459 0.371152 22.725 0.197805 23.6128 0.198243C25.5593 0.198243 27.3162 1.00824 28.5512 2.31824C30.0644 2.0276 31.5155 1.47895 32.8403 0.696576C32.3359 2.24794 31.2793 3.56342 29.8685 4.39658C31.2105 4.24454 32.5222 3.894 33.7598 3.35658C32.8354 4.69507 31.69 5.86882 30.3719 6.82824Z"
+									fill="#AD1AAF" />
+							</svg>
+						</a>
+					</li>
+					<li class="footer__social">
+						<a href="index.html" class="footer__social-link" aria-label="go to our facebook page">
+							<svg width="15" height="27" viewBox="0 0 15 27" fill="none"
+								xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+								<path
+									d="M9.91667 27V14.7041H14.0913L14.7118 9.88981H9.91667V6.82333C9.91667 5.43411 10.3062 4.48296 12.3127 4.48296H14.8552V0.190784C13.6181 0.0590496 12.3747 -0.00455774 11.1305 0.000253789C7.44061 0.000253789 4.90717 2.23861 4.90717 6.34775V9.88081H0.759766V14.6951H4.91623V27H9.91667Z"
+									fill="#AD1AAF" />
+							</svg>
+						</a>
+					</li>
+					<li class="footer__social">
+						<a href="index.html" class="footer__social-link" aria-label="our google plus page">
+							<svg width="30" height="27" viewBox="0 0 30 27" fill="none"
+								xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+								<path
+									d="M2.3446 6.73313C2.3446 9.02506 3.12781 10.6788 4.67069 11.6499C5.93575 12.4476 7.40172 12.5673 8.16453 12.5673C8.34974 12.5673 8.49884 12.5581 8.60244 12.5519C8.60244 12.5519 8.36072 14.0922 9.52848 15.614H9.47511C7.45195 15.614 0.853516 16.0266 0.853516 21.3315C0.853516 26.7254 6.91359 27 8.13 27C8.22574 27 8.28224 26.9969 8.28224 26.9969C8.2948 26.9969 8.38113 27 8.53024 27C9.31031 27 11.3272 26.9049 13.1997 26.0136C15.6294 24.863 16.8615 22.8549 16.8615 20.0536C16.8615 17.3475 14.9843 15.7367 13.614 14.5585C12.7775 13.839 12.0539 13.2193 12.0539 12.6164C12.0539 12.0027 12.5828 11.541 13.2499 10.9565C14.3313 10.013 15.3515 8.66761 15.3515 6.12409C15.3515 3.88892 15.0549 2.38705 13.2264 1.43438C13.4163 1.33926 14.0912 1.27023 14.4239 1.2242C15.4143 1.09227 16.863 0.941932 16.863 0.151875V0H9.64462C9.57242 0.00306818 2.3446 0.263864 2.3446 6.73313ZM13.997 20.5599C14.1351 22.7168 12.247 24.3077 9.41076 24.5086C6.53062 24.7157 4.16058 23.4486 4.02246 21.2932C3.95497 20.2561 4.42113 19.2436 5.33304 18.4352C6.25751 17.6175 7.52729 17.1112 8.9085 17.0115C9.07173 17.0023 9.2334 16.9931 9.39506 16.9931C12.0617 16.9947 13.8667 18.5257 13.997 20.5599ZM12.112 5.2558C12.8198 7.69193 11.751 10.2355 10.0464 10.7064C9.85021 10.7599 9.64741 10.7867 9.44372 10.7862C7.88358 10.7862 6.33756 9.2429 5.7631 7.11511C5.44291 5.92466 5.46959 4.87841 5.83687 3.87511C6.1963 2.88563 6.8461 2.22136 7.66227 1.99585C7.85846 1.94216 8.06094 1.91455 8.26655 1.91455C10.15 1.91455 11.3617 2.67852 12.112 5.2558ZM24.3357 10.4318V5.82955H21.1966V10.4318H16.4879V13.5H21.1966V18.1023H24.3357V13.5H29.0444V10.4318H24.3357Z"
+									fill="#AD1AAF" />
+							</svg>
+						</a>
+					</li>
+				</ul>
+				<div class="footer__rights">
+					All rights reserved <a href="index.html">@Faizansayani</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+		<button id="backToTopBtn" aria-label="go to page start">
+			<svg width="14" height="50" viewBox="0 0 14 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true" focusable="false">
+				<line x1="1.26758" y1="49" x2="1.26758" y2="2" stroke="white" stroke-width="2" stroke-linecap="round" />
+				<path
+					d="M13.1612 17.0256L1.54412 0.761768C1.37448 0.524279 1 0.644289 1 0.93614V17.2C1 17.3657 1.13431 17.5 1.3 17.5H12.917C13.1611 17.5 13.303 17.2242 13.1612 17.0256Z"
+					fill="white" />
+			</svg>
+		</button>
+	</div>
+	<script src="libs/inert.js?_v=20251004162600"></script>
+	<script src="js/app.min.js?_v=20251004162600"></script>
+</body>
+
+</html>
