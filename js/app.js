@@ -599,118 +599,190 @@ const dropdowns = document.querySelectorAll('.form-select');
 if (dropdowns.length > 0) {
 	dropdowns.forEach(dropdown => {
 		const dropdownBtn = dropdown.querySelector('.form-select__button');
-		const dropdownList = dropdown.querySelector(".form-select__list");
-		const dropdownListItems = dropdownList.querySelectorAll(".form-select__list-item");
-		const dropdownInput = dropdown.querySelector(".form-select__input-hidden");
+		const dropdownList = dropdown.querySelector('.form-select__list');
+		const dropdownListItems = dropdownList.querySelectorAll('.form-select__list-item');
+		const dropdownInput = dropdown.querySelector('.form-select__input-hidden');
 
 		let currentFocusIndex = -1;
 
-		dropdownBtn.addEventListener('click', function () {
-			dropdownList.classList.toggle('form-select__list--visible');
-			this.classList.add('form-select__button--active');
+		// Початкові ARIA-атрибути
+		dropdownBtn.setAttribute('aria-haspopup', 'listbox');
+		dropdownBtn.setAttribute('aria-expanded', 'false');
+		dropdownList.setAttribute('role', 'listbox');
+		dropdownListItems.forEach(item => item.setAttribute('role', 'option'));
 
-			// Скидаємо фокус при відкритті
-			if (dropdownList.classList.contains('form-select__list--visible')) {
+		// Встановлення початкового вибору
+		const selectedItem = dropdown.querySelector('.form-select__list-item--selected');
+		if (selectedItem) {
+			dropdownBtn.innerText = selectedItem.innerHTML;
+			dropdownInput.value = selectedItem.dataset.value;
+			selectedItem.setAttribute('aria-selected', 'true');
+		}
+
+		// Відкрити/закрити список
+		dropdownBtn.addEventListener('click', function () {
+			const isOpen = dropdownList.classList.toggle('form-select__list--visible');
+			this.classList.toggle('form-select__button--active', isOpen);
+			this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+			if (isOpen) {
 				currentFocusIndex = -1;
 				removeAllFocus();
 			}
 		});
 
+		// Вибір елемента
 		dropdownListItems.forEach((item, index) => {
-			if (item.classList.contains('form-select__list-item--selected')) {
-				dropdownBtn.innerText = item.innerHTML;
-				dropdownInput.value = item.dataset.value;
-			}
 			item.addEventListener('click', function (e) {
 				e.stopPropagation();
-				dropdownBtn.innerText = this.innerText;
+
+				// Оновлюємо текст кнопки
+				dropdownBtn.innerText = this.innerText.trim();
 				dropdownBtn.focus();
+
+				// Оновлюємо приховане поле
 				dropdownInput.value = this.dataset.value;
+
+				// Закриваємо список
 				dropdownList.classList.remove('form-select__list--visible');
+				dropdownBtn.classList.remove('form-select__button--active');
+				dropdownBtn.setAttribute('aria-expanded', 'false');
 
 				// Оновлюємо вибраний елемент
-				dropdownListItems.forEach(el => el.classList.remove('form-select__list-item--selected'));
+				dropdownListItems.forEach(el => {
+					el.classList.remove('form-select__list-item--selected');
+					el.removeAttribute('aria-selected');
+				});
 				this.classList.add('form-select__list-item--selected');
+				this.setAttribute('aria-selected', 'true');
 			});
 		});
 
-		// Функція для видалення фокусу з усіх елементів
+		// Допоміжні функції
 		function removeAllFocus() {
 			dropdownListItems.forEach(item => {
 				item.classList.remove('form-select__list-item--focused');
 			});
 		}
 
-		// Функція для додавання фокусу
 		function addFocus(index) {
 			if (index >= 0 && index < dropdownListItems.length) {
 				removeAllFocus();
 				dropdownListItems[index].classList.add('form-select__list-item--focused');
-				// Прокручуємо до елемента, якщо потрібно
 				dropdownListItems[index].scrollIntoView({ block: 'nearest' });
 			}
 		}
 
-		// Обробка клавіатури
+		// Клавіатурна навігація
 		dropdown.addEventListener('keydown', (e) => {
 			const isOpen = dropdownList.classList.contains('form-select__list--visible');
 
 			if (e.key === 'ArrowDown') {
 				e.preventDefault();
 				if (!isOpen) {
-					dropdownList.classList.add('form-select__list--visible');
-					dropdownBtn.classList.add('form-select__button--active');
+					openDropdown();
 					currentFocusIndex = 0;
 				} else {
-					currentFocusIndex++;
-					if (currentFocusIndex >= dropdownListItems.length) {
-						currentFocusIndex = 0;
-					}
+					currentFocusIndex = (currentFocusIndex + 1) % dropdownListItems.length;
 				}
 				addFocus(currentFocusIndex);
-			} else if (e.key === 'ArrowUp') {
+			}
+
+			else if (e.key === 'ArrowUp') {
 				e.preventDefault();
 				if (!isOpen) {
-					dropdownList.classList.add('form-select__list--visible');
-					dropdownBtn.classList.add('form-select__button--active');
+					openDropdown();
 					currentFocusIndex = dropdownListItems.length - 1;
 				} else {
-					currentFocusIndex--;
-					if (currentFocusIndex < 0) {
-						currentFocusIndex = dropdownListItems.length - 1;
-					}
+					currentFocusIndex = (currentFocusIndex - 1 + dropdownListItems.length) % dropdownListItems.length;
 				}
 				addFocus(currentFocusIndex);
-			} else if (e.key === 'Enter') {
+			}
+
+			else if (e.key === 'Enter') {
 				e.preventDefault();
 				if (isOpen && currentFocusIndex >= 0) {
 					dropdownListItems[currentFocusIndex].click();
 				} else if (!isOpen) {
-					dropdownList.classList.add('form-select__list--visible');
-					dropdownBtn.classList.add('form-select__button--active');
+					openDropdown();
 				}
+			}
+
+			else if (e.key === 'Escape') {
+				closeDropdown();
 			}
 		});
 
+		// Відкрити/закрити хелпери
+		function openDropdown() {
+			dropdownList.classList.add('form-select__list--visible');
+			dropdownBtn.classList.add('form-select__button--active');
+			dropdownBtn.setAttribute('aria-expanded', 'true');
+		}
+
+		function closeDropdown() {
+			dropdownList.classList.remove('form-select__list--visible');
+			dropdownBtn.classList.remove('form-select__button--active');
+			dropdownBtn.setAttribute('aria-expanded', 'false');
+			currentFocusIndex = -1;
+			removeAllFocus();
+		}
+
+		// Клік поза дропдауном
 		document.addEventListener('click', (e) => {
-			if (e.target !== dropdownBtn) {
-				dropdownList.classList.remove('form-select__list--visible');
-				dropdownBtn.classList.remove('form-select__button--active');
-				currentFocusIndex = -1;
-				removeAllFocus();
-			}
+			if (!dropdown.contains(e.target)) closeDropdown();
 		});
 
 		document.addEventListener('keydown', (e) => {
-			if (e.key === 'Tab' || e.key === 'Escape') {
-				dropdownList.classList.remove('form-select__list--visible');
-				dropdownBtn.classList.remove('form-select__button--active');
-				currentFocusIndex = -1;
-				removeAllFocus();
-			}
+			if (e.key === 'Tab') closeDropdown();
 		});
 	});
 }
+//====================================================
+
+
+// check the form for errors ============================
+function findParentWithClasses(element, classNames) {
+	const selector = classNames.map(name => `.${name}`).join(', ');
+	return element.closest(selector);
+}
+
+const form = document.querySelector('.form');
+const formBtn = document.querySelector('.form__btn');
+
+document.addEventListener('DOMContentLoaded', () => {
+	if (form && formBtn) {
+		const formInputs = form.querySelectorAll('input');
+		formInputs.forEach(input => {
+			input.addEventListener('change', () => {
+				if (input.value.trim() || input.value >= input.min) {
+					input.classList.remove('error');
+				}
+			});
+		});
+
+		formBtn.addEventListener('click', function (e) {
+			const requiredInputs = form.querySelectorAll('input[required]');
+
+			requiredInputs.forEach(input => {
+				if (!input.value.trim() || input.value < input.min) {
+					e.preventDefault();
+					input.classList.add('error');
+				}
+			});
+
+			const firstErrorInput = form.querySelector('input.error');
+			const targetElement = findParentWithClasses(firstErrorInput, ['form__group', 'form-drop-zone']);
+			const elementPosition = targetElement.getBoundingClientRect().top;
+			const offsetPosition = elementPosition + window.scrollY - document.querySelector('.header').offsetHeight;
+
+			window.scrollTo({
+				top: offsetPosition,
+				behavior: 'smooth'
+			});
+		});
+	}
+});
 //====================================================
 
 
@@ -889,94 +961,4 @@ if (formDropZones.length > 0) {
 		}
 	});
 }
-
-// const formDropZones = document.querySelectorAll('.form-drop-zone');
-
-// if (formDropZones.length > 0) {
-// 	formDropZones.forEach(dropZone => {
-// 		const dropZoneContent = document.querySelector(".form-drop-zone__content");
-// 		const fileInput = dropZone.querySelector(".form-drop-zone__input");
-// 		const browseBtn = dropZone.querySelector(".form-drop-zone__browse-btn");
-// 		const preview = document.querySelector(".form-drop-zone__preview");
-// 		const previewDesc = document.querySelector(".form-drop-zone__preview-desc");
-// 		const previewImg = document.querySelector(".form-drop-zone__preview-image");
-// 		const previewCloseBtn = document.querySelector(".form-drop-zone__preview-close");
-
-// 		// Open file dialogue when click
-// 		browseBtn.addEventListener("click", () => fileInput.click());
-
-// 		// Drag file
-// 		dropZone.addEventListener("dragover", (e) => {
-// 			e.preventDefault();
-// 			dropZone.classList.add("dragover");
-// 		});
-
-// 		dropZone.addEventListener("dragleave", () => {
-// 			dropZone.classList.remove("dragover");
-// 		});
-
-// 		dropZone.addEventListener("drop", (e) => {
-// 			e.preventDefault();
-// 			dropZone.classList.remove("dragover");
-
-// 			if (e.dataTransfer.files.length) {
-// 				fileInput.files = e.dataTransfer.files;
-// 				updatePreview(fileInput.files[0]);
-// 			}
-// 		});
-
-// 		// Choice through the button
-// 		fileInput.addEventListener("change", () => {
-// 			if (fileInput.files.length) {
-// 				updatePreview(fileInput.files[0]);
-// 			}
-// 		});
-
-// 		previewCloseBtn.addEventListener('click', () => {
-// 			previewImg.innerHTML = "";
-// 			previewDesc.innerHTML = "";
-// 			dropZoneContent.classList.remove('hidden');
-// 			preview.classList.remove('visible');
-// 			preview.classList.remove('error');
-// 		});
-
-// 		// Preview
-// 		function updatePreview(file) {
-// 			//return if the file size is larger than 100MB
-// 			if (file.size > 104857600) {
-// 				previewImg.innerHTML = "Maximum file size 100MB";
-// 				previewDesc.innerHTML = "";
-// 				dropZoneContent.classList.add('hidden');
-// 				preview.classList.add('visible');
-// 				preview.classList.add('error');
-// 				return;
-// 			}
-// 			preview.classList.remove('error');
-// 			previewImg.innerHTML = "";
-// 			previewDesc.innerHTML =
-// 				"File name: " + file.name +
-// 				", <br><br>file size: " + returnFileSize(file.size) + ".";
-// 			dropZoneContent.classList.add('hidden');
-// 			preview.classList.add('visible');
-// 			if (file.type.startsWith("image/")) {
-// 				const img = document.createElement("img");
-// 				img.src = URL.createObjectURL(file);
-// 				previewImg.appendChild(img);
-// 			} else {
-// 				previewImg.innerHTML = `Selected file: <br>${file.name}`;
-// 			}
-// 		}
-
-// 		function returnFileSize(number) {
-// 			if (number < 1024) {
-// 				return number + "bytes";
-// 			} else if (number > 1024 && number < 1048576) {
-// 				return (number / 1024).toFixed(1) + "KB";
-// 			} else if (number > 1048576) {
-// 				return (number / 1048576).toFixed(1) + "MB";
-// 			}
-// 		}
-// 	});
-// }
 //====================================================
-

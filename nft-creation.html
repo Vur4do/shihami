@@ -7,10 +7,10 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
-		href="https://fonts.googleapis.com/css2?family=Heebo&family=Lato:wght@300;400;700&family=Oxanium:wght@200..800&family=Work+Sans:wght@100..900&display=swap&_v=20251004162600"
+		href="https://fonts.googleapis.com/css2?family=Heebo&family=Lato:wght@300;400;700&family=Oxanium:wght@200..800&family=Work+Sans:wght@100..900&display=swap&_v=20251023135004"
 		rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20251004162600" />
-	<link rel="stylesheet" href="css/style.min.css?_v=20251004162600">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20251023135004" />
+	<link rel="stylesheet" href="css/style.min.css?_v=20251023135004">
 </head>
 
 <body>
@@ -87,13 +87,14 @@
 										<label class="form-drop-zone__label" for="nftFile">Drag And Drop Your NFT File
 											Here</label>
 										<p class="form-drop-zone__desc">PNG, JPG, GIF, Video — Any File Up To 100MB</p>
-										<input class="form-drop-zone__input" type="file" name="nftFile"
-											accept=".png,.jpg,.jpeg,.gif,.mp4,.mov" required hidden>
+										<input class="form-drop-zone__input" type="file" id="nftFile" name="nftFile"
+											accept=".png,.jpg,.jpeg,.gif,.mp4,.mov" required>
 										<button class="form-drop-zone__browse-btn" type="button"
 											aria-label="upload your nft from your device">Browse</button>
 									</div>
 									<div class="form-drop-zone__preview">
-										<button type="button" class="form-drop-zone__preview-close" aria-label="remove selected file"></button>
+										<button type="button" class="form-drop-zone__preview-close"
+											aria-label="remove selected file"></button>
 										<div class="form-drop-zone__preview-inner">
 											<div class="form-drop-zone__preview-desc"></div>
 											<div class="form-drop-zone__preview-image"></div>
@@ -118,47 +119,52 @@
 								</div>
 								<div class="form__group">
 									<label class="form__label" for="collection">Collection</label>
-									<div class="form__select form-select" id="collection" name="collection">
-										<button class="form-select__button">Select Collection</button>
-										<ul class="form-select__list">
-											<li class="form-select__list-item" data-value="1">
+									<div class="form__select form-select">
+										<button class="form-select__button" aria-haspopup="listbox"
+											aria-expanded="false">
+											Select Collection
+										</button>
+										<ul class="form-select__list" role="listbox">
+											<li class="form-select__list-item" role="option" data-value="1">
 												Collection 1
 											</li>
-											<li class="form-select__list-item" data-value="2">
+											<li class="form-select__list-item" role="option" data-value="2">
 												Collection 2
 											</li>
-											<li class="form-select__list-item" data-value="3">
+											<li class="form-select__list-item" role="option" data-value="3">
 												Collection 3
 											</li>
 										</ul>
-										<input type="text" name="selectCollection" value="1"
-											class="form-select__input-hidden">
+										<input type="text" id="collection" name="selectCollection" value=""
+											class="form-select__input-hidden" required>
 									</div>
 								</div>
 								<div class="form__group">
 									<label class="form__label" for="supply">Supply</label>
 									<div class="form__input-wrapper">
-										<input class="form__input" type="number" id="supply" name="supply" min="1" value="1"
-											required>
+										<input class="form__input" type="number" id="supply" name="supply" min="1"
+											value="1" required>
 									</div>
 								</div>
 								<div class="form__group">
 									<label class="form__label" for="blockchain">Blockchain</label>
-									<div class="form__select form-select" id="blockchain" name="blockchain" required>
-										<button class="form-select__button"></button>
-										<ul class="form-select__list">
+									<div class="form__select form-select">
+										<button class="form-select__button" aria-haspopup="listbox"
+											aria-expanded="false" aria-label="chose blockchain">
+										</button>
+										<ul class="form-select__list" role="listbox">
 											<li class="form-select__list-item form-select__list-item--selected"
-												data-value="ethereum">Ethereum
+												role="option" data-value="ethereum" aria-selected="true">Ethereum
 											</li>
-											<li class="form-select__list-item" data-value="polygon">
+											<li class="form-select__list-item" role="option" data-value="polygon">
 												Polygon
 											</li>
-											<li class="form-select__list-item" data-value="binance">
+											<li class="form-select__list-item" role="option" data-value="binance">
 												Binance Smart Chain
 											</li>
 										</ul>
-										<input type="text" name="selectCollection" value="1"
-											class="form-select__input-hidden">
+										<input type="text" id="blockchain" name="blockchain" value="ethereum"
+											class="form-select__input-hidden" required>
 									</div>
 								</div>
 								<div class="form__group form__group--full-width">
@@ -180,9 +186,9 @@
 				</div>
 				<div class="ready__container container">
 					<div class="ready__content">
-						<div class="ready__title title-smaller">
+						<h2 class="ready__title title-smaller">
 							Ready for Next NFT Drop?
-						</div>
+						</h2>
 						<form action="#" class="ready__form">
 							<div class="ready__blurred-spot blurred-spot blurred-spot--small">
 								<img src="img/spot-purple-small.svg" alt="" aria-hidden="true">
@@ -193,7 +199,7 @@
 									name="email">
 							</div>
 							<button class="ready__btn" type="submit" aria-label="Subscribe to updates about NFT drops">
-								<img src="img/Arrow-right.svg" alt="" aria-hidden="true" focusable="false">
+								<img src="img/Arrow-right.svg" alt="" aria-hidden="true">
 							</button>
 						</form>
 					</div>
@@ -310,8 +316,8 @@
 			</svg>
 		</button>
 	</div>
-	<script src="libs/inert.js?_v=20251004162600"></script>
-	<script src="js/app.min.js?_v=20251004162600"></script>
+	<script src="libs/inert.js?_v=20251023135004"></script>
+	<script src="js/app.min.js?_v=20251023135004"></script>
 </body>
 
 </html>

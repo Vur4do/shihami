@@ -2229,6 +2229,11 @@ a {
   background: url("../img/icons/valid-icon.svg") 0 0/100% no-repeat;
 }
 
+.form__input-wrapper.error {
+  -webkit-box-shadow: 0px 0px 10px #a47979;
+          box-shadow: 0px 0px 10px #a47979;
+}
+
 .form__input,
 .form__textarea {
   border-radius: 15px;
@@ -2256,6 +2261,11 @@ a {
   padding: 0 2.7142857143rem;
 }
 
+.form__input.error {
+  -webkit-box-shadow: 0px 0px 10px #a47979;
+          box-shadow: 0px 0px 10px #a47979;
+}
+
 .form__group--full-width {
   -ms-grid-column-span: 2;
   grid-column: span 2;
@@ -2281,6 +2291,11 @@ a {
   background: linear-gradient(147.75deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
   backdrop-filter: blur(10px);
   border-radius: 15px;
+}
+
+.form-drop-zone:has(.form-drop-zone__input.error) {
+  -webkit-box-shadow: 0px 0px 10px #a47979;
+          box-shadow: 0px 0px 10px #a47979;
 }
 
 .form-drop-zone.dragover .form-drop-zone__inner {
@@ -2376,6 +2391,11 @@ a {
 .form-drop-zone__desc {
   margin-top: 2.3571428571rem;
   text-align: center;
+}
+
+.form-drop-zone__input {
+  position: absolute;
+  left: -9999px;
 }
 
 .form-drop-zone__browse-btn {
@@ -2498,6 +2518,11 @@ a {
   position: relative;
 }
 
+.form-select:has(.form-select__input-hidden.error) .form-select__button {
+  -webkit-box-shadow: 0px 0px 10px #a47979;
+          box-shadow: 0px 0px 10px #a47979;
+}
+
 .form-select__button {
   width: 100%;
   position: relative;
@@ -2580,7 +2605,8 @@ a {
 }
 
 .form-select__input-hidden {
-  display: none;
+  position: absolute;
+  left: -9999px;
 }
 
 .privacy-policy__content {
