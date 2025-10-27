@@ -20,7 +20,10 @@ const header = document.querySelector('.header');
 document.addEventListener('DOMContentLoaded', function () {
 	if (headerHeightOffsetTopBlocks.length > 0) {
 		headerHeightOffsetTopBlocks.forEach(item => {
-			item.style.marginTop = header.offsetHeight + 'px';
+			item.style.paddingTop = header.offsetHeight + 'px';
+			if (item.classList.contains("header-height-offset-bottom")) {
+				item.style.paddingBottom = header.offsetHeight + 'px';
+			}
 		});
 	}
 });
@@ -145,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				toggleInert(willBeExpanded);
 			}
 
-			// Додайте це після scrollTo
 			setTimeout(() => {
 				if (!targetElement.hasAttribute('tabindex')) {
 					targetElement.setAttribute('tabindex', '-1');

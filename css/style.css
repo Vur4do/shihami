@@ -747,8 +747,6 @@ a {
 }
 
 .hero__content {
-  padding-bottom: 3.5714285714rem;
-  padding-top: 2.1428571429rem;
   position: relative;
   z-index: 2;
   display: -webkit-box;
@@ -813,6 +811,7 @@ a {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  padding-top: 0.7142857143rem;
 }
 
 .hero__nft-card {
@@ -2924,6 +2923,7 @@ a {
 @media (max-width: 1023.98px) {
   .btn--dark.btn--md {
     height: 3.5714285714rem;
+    padding: 0 0.3571428571rem;
   }
 
   .btn--dark.btn--md span::before,
@@ -3367,8 +3367,12 @@ a {
     font-size: 1.2857142857rem;
   }
 
-  .btn--light .btn__decor::before,
-  .btn--light .btn__decor::after {
+  .btn--small {
+    height: 3.0714285714rem;
+  }
+
+  .btn--light span::before,
+  .btn--light span::after {
     height: 2.1428571429rem;
   }
 
@@ -3386,10 +3390,6 @@ a {
 
   .text {
     font-size: 1.4285714286rem;
-  }
-
-  .hero {
-    padding-top: 3.5714285714rem;
   }
 
   .hero__text {
