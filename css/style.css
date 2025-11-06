@@ -1543,8 +1543,11 @@ a {
   display: grid;
   -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.785714%;
+  -webkit-column-gap: 1.785714%;
+     -moz-column-gap: 1.785714%;
+          column-gap: 1.785714%;
   /* 30/1680 */
+  row-gap: 2.3571428571rem;
 }
 
 .influencer-card {
@@ -2800,6 +2803,10 @@ a {
     margin-left: 0;
   }
 
+  .influencers__items {
+    row-gap: 1.4285714286rem;
+  }
+
   .influencer-card__content-bottom {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3108,7 +3115,10 @@ a {
     margin-top: 4.5714285714rem;
     -ms-grid-columns: (1fr)[2];
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.1428571429rem;
+    -webkit-column-gap: 2.1428571429rem;
+       -moz-column-gap: 2.1428571429rem;
+            column-gap: 2.1428571429rem;
+    row-gap: 2.1428571429rem;
   }
 
   .ready {
@@ -3537,8 +3547,11 @@ a {
 
   .influencers__items {
     margin-top: 2.1428571429rem;
-    gap: 1.785714%;
+    -webkit-column-gap: 1.785714%;
+       -moz-column-gap: 1.785714%;
+            column-gap: 1.785714%;
     /* 30/1680 */
+    row-gap: 0.7142857143rem;
   }
 
   .influencer-card {
@@ -3800,6 +3813,7 @@ a {
   .nft-cards-section__items {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
+    gap: 1.0714285714rem;
   }
 
   .nft-card__content {
@@ -3817,7 +3831,10 @@ a {
   .influencers__items {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
-    gap: 1.4285714286rem;
+    -webkit-column-gap: 1.4285714286rem;
+       -moz-column-gap: 1.4285714286rem;
+            column-gap: 1.4285714286rem;
+    row-gap: 1.0714285714rem;
   }
 
   .ready__form {
